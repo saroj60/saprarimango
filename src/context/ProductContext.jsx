@@ -13,60 +13,6 @@ export const useProducts = () => {
 const initialProducts = [
 
   {
-    id: 1,
-    name: "Alphonso Mango (Premium Box)",
-    location: "Saptari, Nepal",
-    price: "500",
-    yield: "1 KG",
-    rating: "4.9",
-    category: "Premium",
-    image: "/assets/images/alphonso_tree.png",
-    description: "The King of Mangoes. Hand-picked at perfect maturity. These Alphonso mangoes are known for their golden yellow skin and fiberless, buttery pulp with a rich aroma.",
-    specs: {
-      harvestTime: "March - June",
-      grade: "A++ Export Quality",
-      weight: "1 KG",
-      ripeness: "Semi-Ripe (Matures in 2 days)",
-      delivery: "Same Day Delivery"
-    }
-  },
-  {
-    id: 2,
-    name: "Kesar Mango (Standard Box)",
-    location: "Saptari, Nepal",
-    price: "380",
-    yield: "1 KG",
-    rating: "4.8",
-    category: "Popular",
-    image: "/assets/images/kesar_fruit.png",
-    description: "Known for its distinct saffron aroma and intense sweetness. These Kesar mangoes are sourced directly from the foothills of Girnar, ensuring authentic flavor.",
-    specs: {
-      harvestTime: "April - July",
-      grade: "Standard Grade",
-      weight: "1 KG",
-      ripeness: "Ready to Eat",
-      delivery: "Same Day Delivery"
-    }
-  },
-  {
-    id: 3,
-    name: "Imampasand (Royal Variety)",
-    location: "Saptari, Nepal",
-    price: "800",
-    yield: "1 KG",
-    rating: "5.0",
-    category: "Exotic",
-    image: "https://images.unsplash.com/photo-1601493700631-2b16ec4b4716?auto=format&fit=crop&q=80&w=800",
-    description: "Large, heart-shaped mango with a unique spicy-sweet flavor profile and paper-thin skin. Truly a royal treat for mango enthusiasts.",
-    specs: {
-      harvestTime: "May - July",
-      grade: "Premium Selection",
-      weight: "1 KG",
-      ripeness: "Ready to Eat",
-      delivery: "Same Day Delivery"
-    }
-  },
-  {
     id: 4,
     name: "Banganapalli (Bulk Pack)",
     location: "Saptari, Nepal",
