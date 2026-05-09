@@ -1,0 +1,117 @@
+
+> rentatree@0.0.0 lint
+> eslint .
+
+
+C:\Users\saroj\Desktop\rentatree\src\components\common\Navbar.jsx
+   4:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u             no-unused-vars
+   6:10  error  'useAuth' is defined but never used. Allowed unused vars must match /^[A-Z_]/u            no-unused-vars
+  12:9   error  'navigate' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\components\home\ProductCard.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\context\AuthContext.jsx
+  5:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\saroj\Desktop\rentatree\src\context\CartContext.jsx
+  5:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\saroj\Desktop\rentatree\src\context\OrderContext.jsx
+  5:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\saroj\Desktop\rentatree\src\context\ProductContext.jsx
+  5:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\saroj\Desktop\rentatree\src\pages\About.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\pages\AdminDashboard.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\pages\AdminLogin.jsx
+   3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  26:16  error  'err' is defined but never used                                                no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\pages\Cart.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\pages\Checkout.jsx
+  296:17  error  Parsing error: Adjacent JSX elements must be wrapped in an enclosing tag
+
+C:\Users\saroj\Desktop\rentatree\src\pages\Contact.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\pages\Home.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\pages\Login.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\pages\ProductCMS.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+C:\Users\saroj\Desktop\rentatree\src\pages\ProductDetails.jsx
+   3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        no-unused-vars
+  37:7   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  35 |   useEffect(() => {
+  36 |     if (product) {
+> 37 |       setQuantity(isMango ? 5 : 1);
+     |       ^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  38 |     }
+  39 |   }, [product, isMango]);
+  40 |  react-hooks/set-state-in-effect
+
+C:\Users\saroj\Desktop\rentatree\src\pages\Shop.jsx
+   3:10  error    'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          no-unused-vars
+  16:36  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `shopMode`, but the source dependencies were [allProducts, searchQuery, selectedCategory, sortBy]. Inferred different dependency than source.
+
+  14 |   const [shopMode, setShopMode] = useState("Mangoes");
+  15 |
+> 16 |   const filteredProducts = useMemo(() => {
+     |                                    ^^^^^^^
+> 17 |     return allProducts.filter(product => {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 18 |       const isPickle = product.category === "Pickle Supplies";
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 31 |     });
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 32 |   }, [allProducts, searchQuery, selectedCategory, sortBy]);
+     | ^^^^ Could not preserve existing manual memoization
+  33 |
+  34 |   return (
+  35 |     <div className="pt-32 pb-24 min-h-screen bg-nature-50/30">  react-hooks/preserve-manual-memoization
+  16:36  error    Compilation Skipped: Existing memoization could not be preserved
+
+React Compiler has skipped optimizing this component because the existing manual memoization could not be preserved. The inferred dependencies did not match the manually specified dependencies, which could cause the value to change more or less frequently than expected. The inferred dependency was `shopMode`, but the source dependencies were [allProducts, searchQuery, selectedCategory, sortBy]. Inferred different dependency than source.
+
+  14 |   const [shopMode, setShopMode] = useState("Mangoes");
+  15 |
+> 16 |   const filteredProducts = useMemo(() => {
+     |                                    ^^^^^^^
+> 17 |     return allProducts.filter(product => {
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 18 |       const isPickle = product.category === "Pickle Supplies";
+     …
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 31 |     });
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 32 |   }, [allProducts, searchQuery, selectedCategory, sortBy]);
+     | ^^^^ Could not preserve existing manual memoization
+  33 |
+  34 |   return (
+  35 |     <div className="pt-32 pb-24 min-h-screen bg-nature-50/30">  react-hooks/preserve-manual-memoization
+  32:6   warning  React Hook useMemo has a missing dependency: 'shopMode'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              react-hooks/exhaustive-deps
+
+✖ 24 problems (23 errors, 1 warning)
+

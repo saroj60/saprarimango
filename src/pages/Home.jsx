@@ -1,6 +1,4 @@
 import React from 'react';
-import Hero from '../components/home/Hero';
-import Features from '../components/home/Features';
 import ProductCard from '../components/home/ProductCard';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
@@ -11,8 +9,6 @@ const Home = () => {
   const popularProducts = products.filter(p => p.category !== "Pickle Supplies");
   return (
     <main>
-      <Hero />
-      <Features />
       
       {/* Featured Varieties Section */}
       <section className="py-24 bg-nature-50/50">

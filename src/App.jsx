@@ -7,7 +7,6 @@ import ProductDetails from './pages/ProductDetails';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
-import CustomerDashboard from './pages/CustomerDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import ProductCMS from './pages/ProductCMS';
 import About from './pages/About';
@@ -34,7 +33,6 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/cart" element={<Cart />} />
                     <Route path="/checkout" element={<Checkout />} />
-                    <Route path="/dashboard" element={<CustomerDashboard />} />
                     <Route path="/admin" element={<AdminDashboard />} />
                     <Route path="/admin/products/new" element={<ProductCMS />} />
                     <Route path="/admin/products/:id/edit" element={<ProductCMS />} />
