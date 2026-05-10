@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { supabase } from '../lib/supabase';
 
 const ProductContext = createContext();
 
@@ -10,27 +11,29 @@ export const useProducts = () => {
   return context;
 };
 
-const initialProducts = [];
-
 export const ProductProvider = ({ children }) => {
-  const [products, setProducts] = useState(() => {
-    try {
-      const saved = localStorage.getItem('saptarimango_inventory_v2');
-      return saved ? JSON.parse(saved) : initialProducts;
-    } catch (e) {
-      console.error('Error parsing products from localStorage:', e);
-      return initialProducts;
-    }
-  });
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem('saptarimango_inventory_v2', JSON.stringify(products));
-  }, [products]);
+    fetchProducts();
+  }, []);
 
-  const addProduct = (newProduct) => {
-    const productWithId = { 
+  const fetchProducts = async () => {
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .order('id', { ascending: false });
+      
+    if (error) {
+      console.error('Error fetching products:', error);
+    } else {
+      setProducts(data || []);
+    }
+  };
+
+  const addProduct = async (newProduct) => {
+    const productData = { 
       ...newProduct, 
-      id: Date.now(), 
       rating: "5.0",
       specs: newProduct.specs || {
         harvestTime: "Seasonal",
@@ -40,21 +43,50 @@ export const ProductProvider = ({ children }) => {
         delivery: "Same Day Delivery"
       }
     };
-    setProducts(prev => [productWithId, ...prev]);
+
+    const { data, error } = await supabase
+      .from('products')
+      .insert([productData])
+      .select();
+
+    if (error) {
+      console.error('Error adding product:', error);
+    } else if (data) {
+      setProducts(prev => [data[0], ...prev]);
+    }
   };
 
-  const updateProduct = (id, updatedFields) => {
-    setProducts(prev => prev.map(product => 
-      product.id === id ? { ...product, ...updatedFields } : product
-    ));
+  const updateProduct = async (id, updatedFields) => {
+    const { data, error } = await supabase
+      .from('products')
+      .update(updatedFields)
+      .eq('id', id)
+      .select();
+
+    if (error) {
+      console.error('Error updating product:', error);
+    } else if (data) {
+      setProducts(prev => prev.map(product => 
+        product.id === id ? data[0] : product
+      ));
+    }
   };
 
-  const deleteProduct = (id) => {
-    setProducts(prev => prev.filter(product => product.id !== id));
+  const deleteProduct = async (id) => {
+    const { error } = await supabase
+      .from('products')
+      .delete()
+      .eq('id', id);
+
+    if (error) {
+      console.error('Error deleting product:', error);
+    } else {
+      setProducts(prev => prev.filter(product => product.id !== id));
+    }
   };
 
   return (
-    <ProductContext.Provider value={{ products, addProduct, updateProduct, deleteProduct }}>
+    <ProductContext.Provider value={{ products, addProduct, updateProduct, deleteProduct, fetchProducts }}>
       {children}
     </ProductContext.Provider>
   );
