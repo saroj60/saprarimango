@@ -15,27 +15,8 @@ const initialProducts = [];
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState(() => {
     try {
-      const saved = localStorage.getItem('saptarimango_inventory_master');
-      let parsed = saved ? JSON.parse(saved) : initialProducts;
-      
-      // Force sync data for initial core products to ensure new specs are used
-      if (saved) {
-        parsed = parsed.map(p => {
-          const initial = initialProducts.find(i => String(i.id) === String(p.id));
-          if (initial && Number(p.id) <= 10) {
-            return { ...p, ...initial }; 
-          }
-          return p;
-        });
-        
-        // Add missing initial products
-        initialProducts.forEach(initial => {
-          if (!parsed.find(p => String(p.id) === String(initial.id))) {
-            parsed.push(initial);
-          }
-        });
-      }
-      return parsed;
+      const saved = localStorage.getItem('saptarimango_inventory_v2');
+      return saved ? JSON.parse(saved) : initialProducts;
     } catch (e) {
       console.error('Error parsing products from localStorage:', e);
       return initialProducts;
@@ -43,7 +24,7 @@ export const ProductProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    localStorage.setItem('saptarimango_inventory_master', JSON.stringify(products));
+    localStorage.setItem('saptarimango_inventory_v2', JSON.stringify(products));
   }, [products]);
 
   const addProduct = (newProduct) => {
