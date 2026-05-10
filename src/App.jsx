@@ -11,6 +11,7 @@ import AdminDashboard from './pages/AdminDashboard';
 import ProductCMS from './pages/ProductCMS';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import ScrollToTop from './components/common/ScrollToTop';
 import { CartProvider } from './context/CartContext';
 import { ProductProvider } from './context/ProductContext';
 import { AuthProvider } from './context/AuthContext';
@@ -23,6 +24,7 @@ function App() {
         <OrderProvider>
           <CartProvider>
             <Router>
+              <ScrollToTop />
               <div className="flex flex-col min-h-screen bg-nature-50/10">
                 <Navbar />
                 <main className="flex-grow">

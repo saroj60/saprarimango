@@ -40,6 +40,10 @@ const AdminDashboard = () => {
 
   // Removed progress updates for fruit shop pivot
 
+  if (!user || user.role !== 'admin') {
+    return null;
+  }
+
 
 
   const totalRevenue = orders.reduce((acc, r) => {

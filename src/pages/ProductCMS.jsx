@@ -67,6 +67,10 @@ const ProductCMS = () => {
     }
   }, [id, isEditing, products, user, navigate]);
 
+  if (!user || user.role !== 'admin') {
+    return null;
+  }
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
