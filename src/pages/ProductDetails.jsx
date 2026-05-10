@@ -76,8 +76,9 @@ const ProductDetails = () => {
           >
             <div className="relative rounded-[40px] overflow-hidden shadow-2xl">
               <img 
-                src={product.image} 
+                src={product.image || 'https://images.unsplash.com/photo-1629197520635-16570fbd0799?w=800'} 
                 alt={product.name} 
+                onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1629197520635-16570fbd0799?w=800'; }}
                 className="w-full aspect-square object-cover"
               />
               <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-md px-4 py-2 rounded-2xl shadow-lg flex items-center gap-2">
@@ -90,7 +91,7 @@ const ProductDetails = () => {
             <div className="grid grid-cols-3 gap-4">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="aspect-square rounded-2xl overflow-hidden bg-nature-50 border border-nature-100 cursor-pointer hover:border-primary transition-all">
-                  <img src={product.image} alt="Thumbnail" className="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity" />
+                  <img src={product.image || 'https://images.unsplash.com/photo-1629197520635-16570fbd0799?w=800'} onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1629197520635-16570fbd0799?w=800'; }} alt="Thumbnail" className="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity" />
                 </div>
               ))}
             </div>

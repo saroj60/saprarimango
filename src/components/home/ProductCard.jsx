@@ -23,8 +23,9 @@ const ProductCard = ({ product: tree }) => {
     >
       <Link to={`/shop/${tree.id}`} className="relative aspect-[4/3] overflow-hidden block">
         <img 
-          src={tree.image} 
+          src={tree.image || 'https://images.unsplash.com/photo-1629197520635-16570fbd0799?w=800'} 
           alt={tree.name} 
+          onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1629197520635-16570fbd0799?w=800'; }}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
         <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary flex items-center gap-1">

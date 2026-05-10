@@ -216,7 +216,7 @@ const AdminDashboard = () => {
                   {products.map((product) => (
                     <tr key={product.id} className="text-sm text-nature-700 hover:bg-nature-50/30 transition-colors">
                       <td className="px-8 py-4">
-                        <img src={product.image} className="w-12 h-12 rounded-xl object-cover" />
+                        <img src={product.image || 'https://images.unsplash.com/photo-1629197520635-16570fbd0799?w=800'} onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1629197520635-16570fbd0799?w=800'; }} className="w-12 h-12 rounded-xl object-cover" />
                       </td>
                       <td className="px-8 py-4 font-bold text-nature-900">{product.name}</td>
                       <td className="px-8 py-4">{product.location}</td>
