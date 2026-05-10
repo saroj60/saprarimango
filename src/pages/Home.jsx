@@ -71,8 +71,8 @@ const Home = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?auto=format&fit=crop&q=80&w=800" 
-                alt="Farmer working" 
+                src="https://images.unsplash.com/photo-1628156157018-8f85f1c50302?auto=format&fit=crop&q=80&w=800" 
+                alt="Mango farmer" 
                 className="rounded-[40px] shadow-2xl"
               />
             </div>
